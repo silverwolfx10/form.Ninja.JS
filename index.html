@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head lang="pt-br">
+  
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title></title>
+    
+    <style>
+    
+      @import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700);
+      
+      body {
+        background-color: #F0F0F0;
+      }
+      
+      .container {
+        margin: 0 auto;
+        max-width: 980px;
+      }
+      
+    </style>
+    
+  </head>
+  <body>
+  
+    <div class="container">
+      
+      <bbz-label text="Label" required="yes">
+      </bbz-label>
+      
+      <bbz-input placeholder="Input">
+      </bbz-input>
+      
+      <bbz-message text="Mensagem de testo" type="danger">
+      </bbz-message>
+      
+    </div>
+    
+    <!-- ninja.js -->
+    <script src="./dest/ninja.min.js"></script>
+    
+    <!-- components -->
+    <script src="./components/bbz-input.js"></script>
+    <script src="./components/bbz-label.js"></script>
+    <script src="./components/bbz-message.js"></script>
+    
+    <!-- polyfill -->
+    <script>
+      if (!document.registerElement) {
+        var script = document.createElement('script');
+            script.src = '//cdnjs.cloudflare.com/ajax/libs/document-register-element/0.4.5/document-register-element.js';
+        document.querySelector('head').appendChild(script);
+      }
+    </script>
+    
+    <!-- version -->
+    <script>
+      localStorage.clear();
+    </script>
+    
+  </body>
+<html>

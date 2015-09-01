@@ -1,0 +1,23 @@
+<style>
+
+  .message {
+    /* Font */
+    color: <%= color %>;
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    /* Block */
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+    /* Layout */
+    display: inline-block;
+  }
+
+</style>
+
+<% if (text) { %>
+  <span class="message">
+    <%= text %>
+  </span>
+<% } %>

@@ -1,0 +1,39 @@
+<style>
+
+  .label {
+    /* Font */
+    color: #2C2C2C;
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+    /* Block */
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+    /* Position */
+    width: 100%;
+    /* Layout */
+    display: inline-block;
+  }
+  
+  .label_required {
+    /* Font */
+    color: #933432;
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+    /* Block */
+    line-height: 1.4;
+    /* Box */
+    margin-left: 5px;
+  }
+  
+</style>
+
+<label class="label">
+  <%= text %>
+  <% if (/(yes)/i.test(required)) { %>
+    <span class="label_required">*</span>
+  <% } %>
+</label>
