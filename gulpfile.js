@@ -69,7 +69,7 @@ gulp.task('ninja-modules-auto-load', ['bower'], function () {
 
   return gulp.src(mainFiles)
              .pipe(concat('ninja.min.js'))
-             .pipe(uglify())
+             //.pipe(uglify())
              .pipe(gulp.dest('./dest'));
 
 });

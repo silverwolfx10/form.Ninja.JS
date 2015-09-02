@@ -5,10 +5,18 @@ this.Ninja(['$webComponent', '$reduce'], function ($webComponent, $reduce) {
     templateUrl: './templates/bbz-input.html',
     
     getInitialState: function (root) {
-      return $reduce(['defaultvalue', 'helptext', 'inverse', 'label', 'max', 'placeholder', 'required', 'value'], {}, function (o, key) {
+      return $reduce(['defaultvalue', 'inverse', 'max', 'placeholder', 'required', 'value'], {}, function (o, key) {
         return Object.defineProperty(o, key, { value: root.getAttribute(key) });
       });
     },
+    
+    events: {
+      
+      'keyup input': function (root, e) {
+        
+      }
+      
+    }
     
   });
 
