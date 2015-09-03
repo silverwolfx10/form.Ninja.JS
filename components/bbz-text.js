@@ -1,44 +1,28 @@
-this.Ninja(['$webComponent', '$reduce'], function ($webComponent, $reduce) {
+this.Ninja([
+  
+  '$compose',
+  '$fileRequest',
+  '$template',
+  '$webComponent'
+
+], function ($compose, $fileRequest, $template, $webComponent, _) {
 
   $webComponent('bbz-text', {
     
-    templateUrl: './templates/bbz-text.html',
-    
-    getInitialState: function (root) {
-      return $reduce([
-        'defaultvalue',
-        'description',
-        'inverse',
-        'display',
-        'hidewithempty',
-        'label',
-        'mask',
-        'maskerrormessage',
-        'max',
-        'errormessage',
-        'min',
-        'minerrormesage',
-        'name',
-        'placeholder',
-        'readonly',
-        'regexp',
-        'regexperrormessage',
-        'required',
-        'value',
-        'unique',
-        'uniqueerrormessage',
-        'uuid'
-      ], {}, function (o, key) {
-        return Object.defineProperty(o, key, { value: root.getAttribute(key) });
-      });
+    attached: function (element) {
+      element.setState({});
     },
     
     events: {
       
-      'keyup input': function (root, e) {
+      'keyup input': function (element, e) {
         
       }
       
+    },
+    
+    template: function (element, data, render) {
+      $fileRequest('./templates/bbz-text.html', $compose(render, $template(_, data)));
     }
     
   });

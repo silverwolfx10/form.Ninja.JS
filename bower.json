@@ -20,7 +20,9 @@
   ],
   "dependencies": {
     "Ninja.JS": "*",
-    "reduce.Ninja.JS": "*",
+    "compose.Ninja.JS": "*",
+    "fileRequest.Ninja.JS": "*",
+    "template.Ninja.JS": "*",
     "webComponent.Ninja.JS": "*"
   }
 }
