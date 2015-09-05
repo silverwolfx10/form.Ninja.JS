@@ -21,8 +21,11 @@
   "dependencies": {
     "Ninja.JS": "*",
     "compose.Ninja.JS": "*",
+    "event.Ninja.JS": "*",
     "fileRequest.Ninja.JS": "*",
+    "format.Ninja.JS": "*",
     "template.Ninja.JS": "*",
+    "translation.Ninja.JS": "*",
     "webComponent.Ninja.JS": "*"
   }
 }

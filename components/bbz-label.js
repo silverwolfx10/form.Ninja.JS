@@ -1,14 +1,21 @@
-this.Ninja(['$webComponent'], function ($webComponent) {
+this.Ninja([
+  
+  '$compose',
+  '$fileRequest',
+  '$pick',
+  '$template',
+  '$webComponent'
+
+], function ($compose, $fileRequest, $pick, $template, $webComponent, _) {
    
   $webComponent('bbz-label', {
     
-    templateUrl: './templates/bbz-label.html',
+    attached: function (element) {
+      element.setState($pick(['label', 'required'], element));
+    },
     
-    getInitialState: function (root) {
-      return {
-        'required': root.getAttribute('required'),
-        'text': root.getAttribute('text')
-      };
+    template: function (element, data, render) {
+      $fileRequest('./templates/bbz-label.html', $compose(render, $template(_, data)));
     }
     
   });

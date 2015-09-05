@@ -2,14 +2,14 @@
 
   .label {
     /* Font */
-    color: #2C2C2C;
+    color: inherit;
     font-family: "Roboto Condensed", sans-serif;
     font-size: 14px;
     font-weight: 700;
     -webkit-font-smoothing: antialiased;
     /* Block */
-    letter-spacing: 0.5px;
-    line-height: 1.4;
+    letter-spacing: 0.38px;
+    line-height: 1;
     /* Position */
     width: 100%;
     /* Layout */
@@ -24,7 +24,7 @@
     font-weight: 700;
     -webkit-font-smoothing: antialiased;
     /* Block */
-    line-height: 1.4;
+    line-height: 1.62;
     /* Box */
     margin-left: 5px;
   }
@@ -32,7 +32,7 @@
 </style>
 
 <label class="label">
-  <%= text %>
+  <%= label %>
   <% if (/(yes)/i.test(required)) { %>
     <span class="label_required">*</span>
   <% } %>

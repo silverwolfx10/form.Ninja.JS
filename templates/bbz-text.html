@@ -1,1 +1,44 @@
-:D
+<style>
+  
+  .text {
+    /* Animate */
+    transition: all 0.5s ease;
+    /* Background */
+    background-color: #FFFFFF;
+    /* Box */
+    padding: 5px 8px;
+    /* Font */
+    color: #626262;
+  }
+  
+  .text-focus {
+    /* Animate */
+    transition: all 0.5s ease;
+    /* Background */
+    background-color: #6D5CAE;
+    /* Box */
+    padding: 5px 8px;
+    /* Font */
+    color: #E2DEEF;
+  }
+  
+</style>
+
+<div id="text" class="text">
+  <bbz-label
+    label="<%= label %>"
+    required="<%= required %>">
+  </bbz-label>
+  <bbz-input
+    defaultvalue="<%= defaultvalue %>"
+    inverse="<%= inverse %>"
+    mask="<%= mask %>"
+    max="<%= max %>"
+    placeholder="<%= placeholder %>"
+    uuid="<%= uuid %>"
+    value="<%= value %>">
+  </bbz-input>
+</div>
+<bbz-description
+  description="<%= description %>">
+</bbz-description>

@@ -2,16 +2,16 @@
   
   .input {
     /* Background */
-    background-color: #FFFFFF;
+    background-color: inherit;
     /* Font */
-    color: #626262;
+    color: inherit;
     font-family: "Roboto Condensed", sans-serif;
     font-size: 22px;
-    font-weight: 400;
+    font-weight: 300;
     -webkit-font-smoothing: antialiased;
     /* Block */
-    letter-spacing: 0.5px;
-    line-height: 1.4;
+    letter-spacing: 0.38px;
+    line-height: 1;
     text-align: <%= /(yes)/i.test(inverse) ? "right" : "left" %>;
     /* Border */
     border: none;
@@ -24,7 +24,7 @@
   
 </style>
 
-<input
+<input id="input"
   class="input"
   type="text"
   value="<%= value || defaultvalue %>"

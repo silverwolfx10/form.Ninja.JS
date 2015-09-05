@@ -27,7 +27,13 @@
   
     <div class="container">
       
-      <bbz-text></bbz-text>
+      <bbz-text
+        description="Texto para descrever o input"
+        label="Text"
+        mask="999.999.999-99"
+        required="no"
+        uuid="asdf89a7sd6f98a75sas879d6f">
+      </bbz-text>
       
     </div>
     
@@ -35,7 +41,16 @@
     <script src="./dest/ninja.min.js"></script>
     
     <!-- components -->
+    <script src="./components/bbz-description.js"></script>
+    <script src="./components/bbz-input.js"></script>
+    <script src="./components/bbz-label.js"></script>
     <script src="./components/bbz-text.js"></script>
+    
+    <!-- modules -->
+    <script src="./modules/always.js"></script>
+    <script src="./modules/dispatcher.js"></script>
+    <script src="./modules/pick.js"></script>
+    <script src="./modules/prop.js"></script>
     
     <!-- polyfill -->
     <script>

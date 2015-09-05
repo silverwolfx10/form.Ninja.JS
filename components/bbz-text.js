@@ -1,23 +1,62 @@
 this.Ninja([
   
   '$compose',
+  '$dispatcher',
   '$fileRequest',
+  '$format',
+  '$pick',
+  '$prop',
   '$template',
   '$webComponent'
 
-], function ($compose, $fileRequest, $template, $webComponent, _) {
+], function ($compose, $dispatcher, $fileRequest, $format, $pick, $prop, $template, $webComponent, _) {
 
   $webComponent('bbz-text', {
     
     attached: function (element) {
-      element.setState({});
+      element.setState($pick([
+        'defaultvalue',
+        'description',
+        'inverse',
+        'display',
+        'hidewithempty',
+        'label',
+        'mask',
+        'maskerrormessage',
+        'max',
+        'errormessage',
+        'min',
+        'minerrormesage',
+        'name',
+        'placeholder',
+        'readonly',
+        'regexp',
+        'regexperrormessage',
+        'required',
+        'value',
+        'unique',
+        'uniqueerrormessage',
+        'uuid'
+      ], element));
     },
     
-    events: {
+    created: function (element) {
       
-      'keyup input': function (element, e) {
-        
+      function $(query) {
+        return element.shadowRoot.querySelector(query);
       }
+      
+      $dispatcher.on($format('{0}:input:blur', [$prop('uuid', element)]), function () {
+        $('#text').className = 'text';
+      });
+      
+      $dispatcher.on($format('{0}:input:change', [$prop('uuid', element)]), function (value) {
+        console.log(value);
+      });
+      
+      $dispatcher.on($format('{0}:input:focus', [$prop('uuid', element)]), function () {
+        $('#text').className = 'text-focus';
+      });
       
     },
     
