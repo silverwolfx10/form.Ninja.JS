@@ -12,6 +12,13 @@ this.Ninja([
   '$webComponent'
 
 ], function ($compose, $dispatcher, $fileRequest, $format, $mask, $pick, $prop, $template, $validator, $webComponent, _) {
+  
+  function dispatcherEventHook(element, e) {
+    $dispatcher.trigger(
+      $format('{0}:input:{1}', [$prop('uuid', element), e.type]),
+      element.valueOf()
+    );
+  }
 
   $webComponent('bbz-input', {
     
@@ -27,17 +34,9 @@ this.Ninja([
     
     events: {
       
-      'blur #input': function (element) {
-        $dispatcher.trigger($format('{0}:input:blur', [$prop('uuid', element)]));
-      },
-      
-      'change #input': function (element, e) {
-        $dispatcher.trigger($format('{0}:input:change', [$prop('uuid', element)]), element.valueOf());
-      },
-      
-      'focus #input': function (element) {
-        $dispatcher.trigger($format('{0}:input:focus', [$prop('uuid', element)]));
-      },
+      'blur #input': dispatcherEventHook,
+      'change #input': dispatcherEventHook,
+      'focus #input': dispatcherEventHook,
       
       'keydown #input': function (element, e) {
         $mask(element, e);

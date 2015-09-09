@@ -11,14 +11,22 @@ this.Ninja([
 
 ], function ($compose, $dispatcher, $fileRequest, $format, $pick, $prop, $template, $webComponent, _) {
   
+  function dispatcherHook(method, element) {
+    $dispatcher[method](
+      $format('{0}:input:error', [$prop('uuid', element)]),
+      element.setState,
+      element
+    );
+  }
+  
   $webComponent('bbz-error', {
     
     attached: function (element) {
-      $dispatcher.on($format('{0}:input:error', [$prop('uuid', element)]), element.setState, element);
+      dispatcherHook('on', element);
     },
     
     detached: function (element) {
-      $dispatcher.off($format('{0}:input:error', [$prop('uuid', element)]), element.setState, element);
+      dispatcherHook('off', element);
     },
     
     template: function (element, data, render) {
@@ -26,5 +34,5 @@ this.Ninja([
     }
     
   });
-    
+  
 });
