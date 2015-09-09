@@ -17,7 +17,7 @@
       
       .container {
         margin: 0 auto;
-        max-width: 980px;
+        max-width: 400px;
       }
       
     </style>
@@ -28,13 +28,15 @@
     <div class="container">
       
       <bbz-text
-        description="Texto para descrever o input"
-        inverse="no"
-        label="Text"
-        mask="999.999.999-99"
-        maskerrormessage="Este valor não é valido"
+        display="yes"
+        label="Email"
+        readonly="no"
         required="no"
-        uuid="asdf89a7sd6f98a75sas879d6f">
+        requirederrormessage="Email é obrigatório"
+        regexp="^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,6}$"
+        regexperrormessage="Email não é valido"
+        uuid="1"
+        value="cleber.programmer@hotmail.com">
       </bbz-text>
       
     </div>
@@ -57,6 +59,8 @@
     <script src="./modules/pallete.js"></script>
     <script src="./modules/pick.js"></script>
     <script src="./modules/prop.js"></script>
+    <script src="./modules/regexp.js"></script>
+    <script src="./modules/required.js"></script>
     <script src="./modules/stub.js"></script>
     <script src="./modules/t.js"></script>
     <script src="./modules/validator.js"></script>
@@ -68,15 +72,19 @@
         
         '$mask',
         '$pallete',
+        '$regexp',
+        '$required',
         '$stub',
         '$template',
         '$validator'
       
-      ], function ($mask, $pallete, $stub, $template, $validator) {
+      ], function ($mask, $pallete, $regexp, $required, $stub, $template, $validator) {
         
         $template.push('$pallete', $pallete);
         
+        $validator.push($required);
         $validator.push($mask);
+        $validator.push($regexp);
         $validator.push($stub);
         
       });

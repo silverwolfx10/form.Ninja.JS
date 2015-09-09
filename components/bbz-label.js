@@ -11,7 +11,7 @@ this.Ninja([
   $webComponent('bbz-label', {
     
     attached: function (element) {
-      element.setState($pick(['label', 'required'], element));
+      element.setState($pick(['display', 'label', 'required'], element));
     },
     
     template: function (element, data, render) {

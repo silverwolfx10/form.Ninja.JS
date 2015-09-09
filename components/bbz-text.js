@@ -19,20 +19,19 @@ this.Ninja([
         'description',
         'inverse',
         'display',
-        'hidewithempty',
         'label',
         'mask',
         'maskerrormessage',
         'max',
-        'errormessage',
+        'maxerrormessage',
         'min',
-        'minerrormesage',
-        'name',
+        'minerrormessage',
         'placeholder',
         'readonly',
         'regexp',
         'regexperrormessage',
         'required',
+        'requirederrormessage',
         'value',
         'unique',
         'uniqueerrormessage',
@@ -51,12 +50,16 @@ this.Ninja([
       });
       
       $dispatcher.on($format('{0}:input:change', [$prop('uuid', element)]), function (value) {
-        console.log(value);
+        
       });
       
       $dispatcher.on($format('{0}:input:focus', [$prop('uuid', element)]), function () {
         $('#text').className = 'text-focus';
       });
+      
+    },
+    
+    detached: function (element) {
       
     },
     

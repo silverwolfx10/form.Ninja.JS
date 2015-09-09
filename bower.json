@@ -25,6 +25,7 @@
     "every.Ninja.JS": "*",
     "fileRequest.Ninja.JS": "*",
     "format.Ninja.JS": "*",
+    "memoize.Ninja.JS": "*",
     "some.Ninja.JS": "*",
     "template.Ninja.JS": "*",
     "translation.Ninja.JS": "*",

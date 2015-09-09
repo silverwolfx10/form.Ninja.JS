@@ -44,7 +44,7 @@ this.Ninja.module('$mask', [
   };
   
   mask.process = function (element) {
-    $dispatcher.trigger($format('{0}:input:error', [$prop('uuid', element)]), { 'errormessage': $prop('maskerrormessage', element) || '' });
+    $dispatcher.trigger($format('{0}:input:error', [$prop('uuid', element)]), { 'errormessage': $prop('maskerrormessage', element) });
   };
   
   return mask;

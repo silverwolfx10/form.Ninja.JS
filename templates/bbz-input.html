@@ -12,12 +12,13 @@
     /* Block */
     letter-spacing: 0.38px;
     line-height: 1;
-    text-align: <%= /(yes)/i.test(inverse) ? "right" : "left" %>;
+    text-align: <%= /yes/i.test(inverse) ? "right" : "left" %>;
     /* Border */
     border: none;
     outline: none;
     /* Box */
     padding: 0;
+    margin-top: 5px;
     /* Position */
     width: 100%;
   }
@@ -29,4 +30,5 @@
   type="text"
   value="<%= value || defaultvalue %>"
   maxlength="<%= max %>"
-  placeholder="<%= placeholder %>">
+  placeholder="<%= placeholder %>"
+  <%= /yes/i.test(readonly) ? "readonly" : "" %>>

@@ -6,7 +6,7 @@
     /* Background */
     background-color: <%= $sandbox.$pallete.COLOR_MASTER_LIGHTING %>;
     /* Box */
-    padding: 5px 8px;
+    padding: 8px 10px 5px 10px;
     /* Font */
     color: <%= $sandbox.$pallete.COLOR_MASTER %>;
   }
@@ -17,7 +17,7 @@
     /* Background */
     background-color: <%= $sandbox.$pallete.COLOR_PRIMARY %>;
     /* Box */
-    padding: 5px 8px;
+    padding: 8px 10px 5px 10px;
     /* Font */
     color: <%= $sandbox.$pallete.COLOR_PRIMARY_LIGHTER %>;
   }
@@ -26,16 +26,28 @@
 
 <div id="text" class="text">
   <bbz-label
+    display="<%= display %>"
     label="<%= label %>"
     required="<%= required %>">
   </bbz-label>
   <bbz-input
     defaultvalue="<%= defaultvalue %>"
+    display="<%= display %>"
     inverse="<%= inverse %>"
     mask="<%= mask %>"
     maskerrormessage="<%= maskerrormessage %>"
     max="<%= max %>"
+    maxerrormessage="<%= maxerrormessage %>"
+    min="<%= min %>"
+    minerrormessage="<%= minerrormessage %>"
     placeholder="<%= placeholder %>"
+    readonly="<%= readonly %>"
+    regexp="<%= regexp %>"
+    regexperrormessage="<%= regexperrormessage %>"
+    required="<%= required %>"
+    requirederrormessage="<%= requirederrormessage %>"
+    unique="<% = unique %>"
+    uniqueerrormessage="<% = uniqueerrormessage %>"
     uuid="<%= uuid %>"
     value="<%= value %>">
   </bbz-input>

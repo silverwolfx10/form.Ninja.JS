@@ -28,6 +28,7 @@ this.Ninja([
         'inverse',
         'max',
         'placeholder',
+        'readonly',
         'value'
       ], element));
     },
