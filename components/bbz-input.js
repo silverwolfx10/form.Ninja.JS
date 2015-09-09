@@ -38,13 +38,9 @@ this.Ninja([
       'change #input': dispatcherEventHook,
       'focus #input': dispatcherEventHook,
       
-      'keydown #input': function (element, e) {
-        $mask(element, e);
-      },
+      'keydown #input': $mask,
       
-      'keyup #input': function (element) {
-        $validator(element);
-      }
+      'keyup #input': $validator
       
     },
     
