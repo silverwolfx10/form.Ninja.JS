@@ -4,22 +4,22 @@
     /* Animate */
     transition: all 0.5s ease;
     /* Background */
-    background-color: #FFFFFF;
+    background-color: <%= $sandbox.$pallete.COLOR_MASTER_LIGHTING %>;
     /* Box */
     padding: 5px 8px;
     /* Font */
-    color: #626262;
+    color: <%= $sandbox.$pallete.COLOR_MASTER %>;
   }
   
   .text-focus {
     /* Animate */
     transition: all 0.5s ease;
     /* Background */
-    background-color: #6D5CAE;
+    background-color: <%= $sandbox.$pallete.COLOR_PRIMARY %>;
     /* Box */
     padding: 5px 8px;
     /* Font */
-    color: #E2DEEF;
+    color: <%= $sandbox.$pallete.COLOR_PRIMARY_LIGHTER %>;
   }
   
 </style>
@@ -33,12 +33,16 @@
     defaultvalue="<%= defaultvalue %>"
     inverse="<%= inverse %>"
     mask="<%= mask %>"
+    maskerrormessage="<%= maskerrormessage %>"
     max="<%= max %>"
     placeholder="<%= placeholder %>"
     uuid="<%= uuid %>"
     value="<%= value %>">
   </bbz-input>
 </div>
+<bbz-error
+  uuid="<%= uuid %>">
+</bbz-error>
 <bbz-description
   description="<%= description %>">
 </bbz-description>

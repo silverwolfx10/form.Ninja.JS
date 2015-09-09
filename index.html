@@ -29,8 +29,10 @@
       
       <bbz-text
         description="Texto para descrever o input"
+        inverse="no"
         label="Text"
         mask="999.999.999-99"
+        maskerrormessage="Este valor não é valido"
         required="no"
         uuid="asdf89a7sd6f98a75sas879d6f">
       </bbz-text>
@@ -42,6 +44,7 @@
     
     <!-- components -->
     <script src="./components/bbz-description.js"></script>
+    <script src="./components/bbz-error.js"></script>
     <script src="./components/bbz-input.js"></script>
     <script src="./components/bbz-label.js"></script>
     <script src="./components/bbz-text.js"></script>
@@ -49,8 +52,36 @@
     <!-- modules -->
     <script src="./modules/always.js"></script>
     <script src="./modules/dispatcher.js"></script>
+    <script src="./modules/equal.js"></script>
+    <script src="./modules/mask.js"></script>
+    <script src="./modules/pallete.js"></script>
     <script src="./modules/pick.js"></script>
     <script src="./modules/prop.js"></script>
+    <script src="./modules/stub.js"></script>
+    <script src="./modules/t.js"></script>
+    <script src="./modules/validator.js"></script>
+    
+    <!-- setup -->
+    <script>
+      
+      this.Ninja.setup([
+        
+        '$mask',
+        '$pallete',
+        '$stub',
+        '$template',
+        '$validator'
+      
+      ], function ($mask, $pallete, $stub, $template, $validator) {
+        
+        $template.push('$pallete', $pallete);
+        
+        $validator.push($mask);
+        $validator.push($stub);
+        
+      });
+      
+    </script>
     
     <!-- polyfill -->
     <script>

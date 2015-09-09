@@ -60,6 +60,14 @@ this.Ninja([
       
     },
     
+    prototype: {
+      
+      isValid: function (element) {
+        return (element.shadowRoot || element).querySelector('bbz-input').isValid();
+      }
+      
+    },
+    
     template: function (element, data, render) {
       $fileRequest('./templates/bbz-text.html', $compose(render, $template(_, data)));
     }

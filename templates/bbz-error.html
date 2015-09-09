@@ -1,8 +1,8 @@
 <style>
 
-  .description {
+  .errormessage {
     /* Font */
-    color: <%= $sandbox.$pallete.COLOR_MASTER %>;
+    color: <%= $sandbox.$pallete.COLOR_DANGER %>;
     font-family: "Roboto Condensed", sans-serif;
     font-size: 14px;
     font-weight: 400;
@@ -16,8 +16,8 @@
 
 </style>
 
-<% if (!!description) { %>
-  <span class="description">
-    <%= description %>
+<% if (!!errormessage) { %>
+  <span class="errormessage">
+    <%= errormessage %>
   </span>
 <% } %>

@@ -22,8 +22,10 @@
     "Ninja.JS": "*",
     "compose.Ninja.JS": "*",
     "event.Ninja.JS": "*",
+    "every.Ninja.JS": "*",
     "fileRequest.Ninja.JS": "*",
     "format.Ninja.JS": "*",
+    "some.Ninja.JS": "*",
     "template.Ninja.JS": "*",
     "translation.Ninja.JS": "*",
     "webComponent.Ninja.JS": "*"

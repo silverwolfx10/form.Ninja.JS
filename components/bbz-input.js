@@ -2,16 +2,16 @@ this.Ninja([
   
   '$compose',
   '$dispatcher',
-  '$event',
   '$fileRequest',
   '$format',
+  '$mask',
   '$pick',
   '$prop',
   '$template',
-  '$translation',
+  '$validator',
   '$webComponent'
 
-], function ($compose, $dispatcher, $event, $fileRequest, $format, $pick, $prop, $template, $translation, $webComponent, _) {
+], function ($compose, $dispatcher, $fileRequest, $format, $mask, $pick, $prop, $template, $validator, $webComponent, _) {
 
   $webComponent('bbz-input', {
     
@@ -32,7 +32,7 @@ this.Ninja([
       },
       
       'change #input': function (element, e) {
-        $dispatcher.trigger($format('{0}:input:change', [$prop('uuid', element)]), $event.target(e).value);
+        $dispatcher.trigger($format('{0}:input:change', [$prop('uuid', element)]), element.valueOf());
       },
       
       'focus #input': function (element) {
@@ -40,30 +40,23 @@ this.Ninja([
       },
       
       'keydown #input': function (element, e) {
-        
-        function compare(a) {
-          return a == e.keyCode;
-        }
-
-        if ([8, 9, 13, 33, 34, 35, 36, 37, 38, 39, 40, ''].some(compare)) return;
-        
-        e.preventDefault();
-        
-        var value = (function () {
+        $mask(element, e);
+      },
       
-          if (!(this instanceof arguments.callee)) {
-            return new arguments.callee();
-          }
+      'keyup #input': function (element) {
+        $validator(element);
+      }
+      
+    },
     
-          [].push.apply(this, [].slice.call($event.target(e).value));
-          [].splice.call(this, $event.target(e).selectionStart, 1, String.fromCharCode((96 <= e.keyCode && e.keyCode <= 105 ? e.keyCode - 48 : e.keyCode)));
-          
-          return [].join.call(this, '');
-          
-        })();
-        
-        $event.target(e).value = $translation($prop('mask', element), value);
-        
+    prototype: {
+      
+      isValid: function (element) {
+        return $validator.isValid(element);
+      },
+      
+      valueOf: function (element) {
+        return (element.shadowRoot || element).querySelector('#input').value;
       }
       
     },
