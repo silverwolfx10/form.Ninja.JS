@@ -32,17 +32,17 @@ this.Ninja([
         'regexperrormessage',
         'required',
         'requirederrormessage',
-        'value',
         'unique',
         'uniqueerrormessage',
-        'uuid'
+        'uuid',
+        'value'
       ], element));
     },
     
     created: function (element) {
       
       function $(query) {
-        return element.shadowRoot.querySelector(query);
+        return (element.shadowRoot || element).querySelector(query);
       }
       
       $dispatcher.on($format('{0}:input:blur', [$prop('uuid', element)]), function () {
