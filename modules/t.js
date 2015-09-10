@@ -1,4 +1,4 @@
-this.Ninja.module('$T', [], function () {
+this.Ninja.module('$t', [], function () {
   
   function t() {
     return !0;

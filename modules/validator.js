@@ -1,9 +1,9 @@
-this.Ninja.module('$validator', ['$every', '$some', '$T'], function ($every, $some, $T) {
+this.Ninja.module('$validator', ['$every', '$some', '$t'], function ($every, $some, $t) {
   
   var validators = [];
   
   function validator(element) {
-    $some(validators, function (a) { return a.can(element) ? (a.process(element), $T()) : !1 });
+    $some(validators, function (a) { return a.can(element) ? (a.process(element), $t()) : !1 });
   }
   
   validator.isValid = function (element) {
