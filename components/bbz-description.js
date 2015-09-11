@@ -1,3 +1,14 @@
+/**
+ * <bbz-descripion></bbz-description>
+ * 
+ * Responsavel pela exibicao das descricoes do input
+ * Example:
+ * 
+ *        <bbz-description
+ *          description="Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos">
+ *        </bbz-description>
+ * 
+ */
 this.Ninja([
   
   '$compose',
@@ -15,10 +26,10 @@ this.Ninja([
   $webComponent('bbz-description', {
     
     /**
-     * Quando o Web Component bbz-description adicionado ao DOM,
+     * Quando o Web Component bbz-description criado,
      * sera disparado esta funcao, setando um novo estado para o component
      */
-    attached: function (element) {
+    created: function (element) {
       element.setState($pick(['description'], element));
     },
     
