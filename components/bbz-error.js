@@ -1,3 +1,14 @@
+/**
+ * <bbz-error></bbz-error>
+ * 
+ * Responsavel pela exibicao de erros gerados por inputs
+ * Example:
+ * 
+ *        <bbz-error
+ *          uuid="00000000-0000-0000-0000-000000000000">
+ *        </bbz-error
+ * 
+ */
 this.Ninja([
   
   '$compose',
