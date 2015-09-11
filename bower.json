@@ -22,6 +22,7 @@
     "Ninja.JS": "*",
     "always.Ninja.JS": "*",
     "compose.Ninja.JS": "*",
+    "curry.Ninja.JS": "*",
     "dispatcher.Ninja.JS": "*",
     "equal.Ninja.JS": "*",
     "event.Ninja.JS": "*",
