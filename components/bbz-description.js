@@ -12,12 +12,17 @@
 this.Ninja([
   
   '$compose',
+  '$curry',
   '$fileRequest',
   '$pick',
   '$template',
   '$webComponent'
 
-], function ($compose, $fileRequest, $pick, $template, $webComponent, _) {
+], function ($compose, $curry, $fileRequest, $pick, $template, $webComponent, _) {
+  
+  function render(element, html) {
+    element.shadowRoot.innerHTML = html;
+  }
   
   /**
    * Criacao do Web Componente bbz-description, responsavel pela exibicao
@@ -36,8 +41,8 @@ this.Ninja([
     /**
      * Quando alterado o stado do componente, o template sera executado
      */
-    template: function (element, data, render) {
-      $fileRequest('./templates/bbz-description.html', $compose(render, $template(_, data)));
+    template: function (element, data) {
+      $fileRequest('./templates/bbz-description.html', $compose($curry(render)(element), $template(_, data)));
     }
     
   });

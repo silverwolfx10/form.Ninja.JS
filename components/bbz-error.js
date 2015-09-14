@@ -45,6 +45,10 @@ this.Ninja([
     );
   }
   
+  function render(element, html) {
+    element.shadowRoot.innerHTML = html;
+  }
+  
   /**
    * Criacao do Web Componente bbz-error, responsavel pela exibicao
    * de erros
@@ -67,8 +71,8 @@ this.Ninja([
     /**
      * Quando alterado o stado do componente, o template sera executado
      */
-    template: function (element, data, render) {
-      $fileRequest('./templates/bbz-error.html', $compose(render, $template(_, data)));
+    template: function (element, data) {
+      $fileRequest('./templates/bbz-error.html', $compose($curry(render)(element), $template(_, data)));
     }
     
   });

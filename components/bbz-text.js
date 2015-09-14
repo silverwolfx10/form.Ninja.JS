@@ -1,6 +1,7 @@
 this.Ninja([
   
   '$compose',
+  '$curry',
   '$dispatcher',
   '$fileRequest',
   '$format',
@@ -9,11 +10,35 @@ this.Ninja([
   '$template',
   '$webComponent'
 
-], function ($compose, $dispatcher, $fileRequest, $format, $pick, $prop, $template, $webComponent, _) {
+], function ($compose, $curry, $dispatcher, $fileRequest, $format, $pick, $prop, $template, $webComponent, _) {
+  
+  function render(element, html) {
+    element.shadowRoot.innerHTML = html;
+  }
 
   $webComponent('bbz-text', {
     
     attached: function (element) {
+      
+      function $(query) {
+        return (element.shadowRoot || element).querySelector(query);
+      }
+      
+      $dispatcher.on($format('{0}:input:blur', [$prop('uuid', element)]), function () {
+        $('#text').className = 'text';
+      });
+      
+      $dispatcher.on($format('{0}:input:change', [$prop('uuid', element)]), function (value) {
+        
+      });
+      
+      $dispatcher.on($format('{0}:input:focus', [$prop('uuid', element)]), function () {
+        $('#text').className = 'text-focus';
+      });
+      
+    },
+    
+    created: function (element) {
       element.setState($pick([
         'defaultvalue',
         'description',
@@ -39,26 +64,6 @@ this.Ninja([
       ], element));
     },
     
-    created: function (element) {
-      
-      function $(query) {
-        return (element.shadowRoot || element).querySelector(query);
-      }
-      
-      $dispatcher.on($format('{0}:input:blur', [$prop('uuid', element)]), function () {
-        $('#text').className = 'text';
-      });
-      
-      $dispatcher.on($format('{0}:input:change', [$prop('uuid', element)]), function (value) {
-        
-      });
-      
-      $dispatcher.on($format('{0}:input:focus', [$prop('uuid', element)]), function () {
-        $('#text').className = 'text-focus';
-      });
-      
-    },
-    
     detached: function (element) {
       
     },
@@ -71,8 +76,8 @@ this.Ninja([
       
     },
     
-    template: function (element, data, render) {
-      $fileRequest('./templates/bbz-text.html', $compose(render, $template(_, data)));
+    template: function (element, data) {
+      $fileRequest('./templates/bbz-text.html', $compose($curry(render)(element), $template(_, data)));
     }
     
   });
