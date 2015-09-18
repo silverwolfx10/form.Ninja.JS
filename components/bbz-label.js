@@ -1,18 +1,14 @@
 this.Ninja([
   
   '$compose',
-  '$curry',
   '$fileRequest',
   '$pick',
+  '$render',
   '$template',
   '$webComponent'
 
-], function ($compose, $curry, $fileRequest, $pick, $template, $webComponent, _) {
+], function ($compose, $fileRequest, $pick, $render, $template, $webComponent, _) {
   
-  function render(element, html) {
-    element.shadowRoot.innerHTML = html;
-  }
-   
   $webComponent('bbz-label', {
     
     attached: function (element) {
@@ -20,7 +16,7 @@ this.Ninja([
     },
     
     template: function (element, data) {
-      $fileRequest('./templates/bbz-label.html', $compose($curry(render)(element), $template(_, data)));
+      $fileRequest('./templates/bbz-label.html', $compose($render(element), $template(_, data)));
     }
     
   });

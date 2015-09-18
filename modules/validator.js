@@ -3,7 +3,7 @@ this.Ninja.module('$validator', ['$every', '$some', '$t'], function ($every, $so
   var validators = [];
   
   function validator(element) {
-    $some(validators, function (a) { return a.can(element) ? (a.process(element), $t()) : !1 });
+    $some(validators, function (a) { return a.can(element) ? $t(a.process(element)) : !1 });
   }
   
   validator.isValid = function (element) {

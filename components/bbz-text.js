@@ -1,21 +1,17 @@
 this.Ninja([
   
   '$compose',
-  '$curry',
   '$dispatcher',
   '$fileRequest',
   '$format',
   '$pick',
   '$prop',
+  '$render',
   '$template',
   '$webComponent'
 
-], function ($compose, $curry, $dispatcher, $fileRequest, $format, $pick, $prop, $template, $webComponent, _) {
+], function ($compose, $dispatcher, $fileRequest, $format, $pick, $prop, $render, $template, $webComponent, _) {
   
-  function render(element, html) {
-    element.shadowRoot.innerHTML = html;
-  }
-
   $webComponent('bbz-text', {
     
     attached: function (element) {
@@ -77,7 +73,7 @@ this.Ninja([
     },
     
     template: function (element, data) {
-      $fileRequest('./templates/bbz-text.html', $compose($curry(render)(element), $template(_, data)));
+      $fileRequest('./templates/bbz-text.html', $compose($render(element), $template(_, data)));
     }
     
   });

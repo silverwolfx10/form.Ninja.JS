@@ -18,10 +18,11 @@ this.Ninja([
   '$format',
   '$pick',
   '$prop',
+  '$render',
   '$template',
   '$webComponent'
 
-], function ($compose, $curry, $dispatcher, $fileRequest, $format, $pick, $prop, $template, $webComponent, _) {
+], function ($compose, $curry, $dispatcher, $fileRequest, $format, $pick, $prop, $render, $template, $webComponent, _) {
   
   /**
    * Hook method para os eventos de attached e detached, sendo que
@@ -43,10 +44,6 @@ this.Ninja([
       element.setState,
       element
     );
-  }
-  
-  function render(element, html) {
-    element.shadowRoot.innerHTML = html;
   }
   
   /**
@@ -72,7 +69,7 @@ this.Ninja([
      * Quando alterado o stado do componente, o template sera executado
      */
     template: function (element, data) {
-      $fileRequest('./templates/bbz-error.html', $compose($curry(render)(element), $template(_, data)));
+      $fileRequest('./templates/bbz-error.html', $compose($render(element), $template(_, data)));
     }
     
   });

@@ -1,28 +1,24 @@
 this.Ninja([
   
   '$compose',
-  '$curry',
   '$dispatcher',
   '$fileRequest',
   '$format',
   '$mask',
   '$pick',
   '$prop',
+  '$render',
   '$template',
   '$validator',
   '$webComponent'
 
-], function ($compose, $curry, $dispatcher, $fileRequest, $format, $mask, $pick, $prop, $template, $validator, $webComponent, _) {
+], function ($compose, $dispatcher, $fileRequest, $format, $mask, $pick, $prop, $render, $template, $validator, $webComponent, _) {
   
   function dispatcherEventHook(element, e) {
     $dispatcher.trigger(
       $format('{0}:input:{1}', [$prop('uuid', element), e.type]),
       element.valueOf()
     );
-  }
-  
-  function render(element, html) {
-    element.shadowRoot.innerHTML = html;
   }
 
   $webComponent('bbz-input', {
@@ -65,7 +61,7 @@ this.Ninja([
     },
     
     template: function (element, data) {
-      $fileRequest('./templates/bbz-input.html', $compose($curry(render)(element), $template(_, data)));
+      $fileRequest('./templates/bbz-input.html', $compose($render(element), $template(_, data)));
     }
     
   });
