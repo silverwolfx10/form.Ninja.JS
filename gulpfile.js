@@ -69,17 +69,26 @@ gulp.task('ninja-modules-auto-load', ['bower'], function () {
 
   return gulp.src(mainFiles)
              .pipe(concat('ninja.min.js'))
-             //.pipe(uglify())
+             .pipe(uglify())
              .pipe(gulp.dest('./dest'));
 
 });
 
-gulp.task('ninja-smoke-bomb', ['ninja-modules-auto-load'], function () {
+gulp.task('ninja-form', function () {
+
+  return gulp.src(['./components/*.js', './modules/*.js', './setups/*.js'])
+             .pipe(concat('ninja-form.min.js'))
+             .pipe(uglify())
+             .pipe(gulp.dest('./dest'));
+
+});
+
+gulp.task('ninja-smoke-bomb', ['ninja-modules-auto-load', 'ninja-form'], function () {
 
   return gulp.src('./script.txt')
-             .pipe(inject(gulp.src(['./dest/ninja.min.js']), {
-                starttag: "javascript:(function () {",
-                endtag: "}).call({})",
+             .pipe(inject(gulp.src(['./dest/ninja.min.js', './dest/ninja-form.min.js']), {
+                starttag: "/* START */",
+                endtag: "/* END */",
                 transform: function (filePath, file) {
                   return file.contents.toString('utf8');
                 }

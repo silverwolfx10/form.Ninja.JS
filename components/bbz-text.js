@@ -20,17 +20,17 @@ this.Ninja([
         return (element.shadowRoot || element).querySelector(query);
       }
       
-      $dispatcher.on($format('{0}:input:blur', [$prop('uuid', element)]), function () {
+      function blur() {
         $('#text').className = 'text';
-      });
+      }
       
-      $dispatcher.on($format('{0}:input:change', [$prop('uuid', element)]), function (value) {
-        
-      });
-      
-      $dispatcher.on($format('{0}:input:focus', [$prop('uuid', element)]), function () {
+      function focus() {
         $('#text').className = 'text-focus';
-      });
+      }
+      
+      $dispatcher.on($format('{0}:input:blur', [$prop('uuid', element)]), blur, element);
+      $dispatcher.on($format('{0}:input:change', [$prop('uuid', element)]), function () {}, element);
+      $dispatcher.on($format('{0}:input:focus', [$prop('uuid', element)]), focus, element);
       
     },
     
