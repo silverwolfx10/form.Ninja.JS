@@ -36,6 +36,7 @@
     "t.Ninja.JS": "*",
     "template.Ninja.JS": "*",
     "translation.Ninja.JS": "*",
-    "webComponent.Ninja.JS": "*"
+    "webComponent.Ninja.JS": "*",
+    "push.Ninja.JS": "*"
   }
 }

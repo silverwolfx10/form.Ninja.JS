@@ -15,9 +15,7 @@ this.Ninja([
       element.setState($pick(['display', 'label', 'required'], element));
     },
     
-    template: function (element, data) {
-      $fileRequest('./templates/bbz-label.html', $compose($render(element), $template(_, data)));
-    }
+    template: $render(_, _, '../templates/bbz-label.html')
     
   });
     

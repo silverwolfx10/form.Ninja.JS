@@ -22,35 +22,75 @@
     color: <%= $pallete.COLOR_PRIMARY_LIGHTER %>;
   }
   
+  .text_input {
+    display: table;
+    width: 100%;
+  }
+  
+  .text_element {
+    display: table-cell;
+    width: 100%;
+  }
+  
+  .text_element-after {
+    display: table-cell;
+    width: 1%;
+    padding-left: 5px;
+  }
+  
+  .text_element-before {
+    display: table-cell;
+    width: 1%;
+    padding-right: 5px;
+  }
+  
 </style>
 
-<div id="text" class="text">
+<div class="text" id="text">
   <bbz-label
     display="<%= display %>"
     label="<%= label %>"
     required="<%= required %>">
   </bbz-label>
-  <bbz-input
-    defaultvalue="<%= defaultvalue %>"
-    display="<%= display %>"
-    inverse="<%= inverse %>"
-    mask="<%= mask %>"
-    maskerrormessage="<%= maskerrormessage %>"
-    max="<%= max %>"
-    maxerrormessage="<%= maxerrormessage %>"
-    min="<%= min %>"
-    minerrormessage="<%= minerrormessage %>"
-    placeholder="<%= placeholder %>"
-    readonly="<%= readonly %>"
-    regexp="<%= regexp %>"
-    regexperrormessage="<%= regexperrormessage %>"
-    required="<%= required %>"
-    requirederrormessage="<%= requirederrormessage %>"
-    unique="<%= unique %>"
-    uniqueerrormessage="<%= uniqueerrormessage %>"
-    uuid="<%= uuid %>"
-    value="<%= value %>">
-  </bbz-input>
+<div class="text_input">
+    
+    <% if (before) { %>
+      <div class="text_element-before">
+        <%= before || '' %>
+      </div>
+    <% } %>
+    
+    <div class="text_element">
+      <bbz-input
+        defaultvalue="<%= defaultvalue %>"
+        display="<%= display %>"
+        inverse="<%= inverse %>"
+        mask="<%= mask %>"
+        maskerrormessage="<%= maskerrormessage %>"
+        max="<%= max %>"
+        maxerrormessage="<%= maxerrormessage %>"
+        min="<%= min %>"
+        minerrormessage="<%= minerrormessage %>"
+        placeholder="<%= placeholder %>"
+        readonly="<%= readonly %>"
+        regexp="<%= regexp %>"
+        regexperrormessage="<%= regexperrormessage %>"
+        required="<%= required %>"
+        requirederrormessage="<%= requirederrormessage %>"
+        unique="<%= unique %>"
+        uniqueerrormessage="<%= uniqueerrormessage %>"
+        uuid="<%= uuid %>"
+        value="<%= value %>">
+      </bbz-input>
+    </div>
+    
+    <% if (after) { %>
+      <div class="text_element-after">
+        <%= after || '' %>
+      </div>
+    <% } %>
+    
+  </div>
 </div>
 <bbz-error
   uuid="<%= uuid %>">

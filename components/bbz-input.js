@@ -60,9 +60,7 @@ this.Ninja([
       
     },
     
-    template: function (element, data) {
-      $fileRequest('./templates/bbz-input.html', $compose($render(element), $template(_, data)));
-    }
+    template: $render(_, _,'../templates/bbz-input.html')
     
   });
 

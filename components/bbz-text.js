@@ -12,30 +12,30 @@ this.Ninja([
 
 ], function ($compose, $dispatcher, $fileRequest, $format, $pick, $prop, $render, $template, $webComponent, _) {
   
+  function $(query) {
+    return this.shadowRoot.querySelector(query);
+  }
+  
+  function blur() {
+    $.call(this, '#text').className = 'text';
+  }
+  
+  function focus() {
+    $.call(this, '#text').className = 'text-focus';
+  }
+  
   $webComponent('bbz-text', {
     
     attached: function (element) {
-      
-      function $(query) {
-        return (element.shadowRoot || element).querySelector(query);
-      }
-      
-      function blur() {
-        $('#text').className = 'text';
-      }
-      
-      function focus() {
-        $('#text').className = 'text-focus';
-      }
-      
       $dispatcher.on($format('{0}:input:blur', [$prop('uuid', element)]), blur, element);
       $dispatcher.on($format('{0}:input:change', [$prop('uuid', element)]), function () {}, element);
       $dispatcher.on($format('{0}:input:focus', [$prop('uuid', element)]), focus, element);
-      
     },
     
     created: function (element) {
       element.setState($pick([
+        'after',
+        'before',
         'defaultvalue',
         'description',
         'inverse',
@@ -61,7 +61,9 @@ this.Ninja([
     },
     
     detached: function (element) {
-      
+      $dispatcher.off($format('{0}:input:blur', [$prop('uuid', element)]), blur, element);
+      $dispatcher.off($format('{0}:input:change', [$prop('uuid', element)]), function () {}, element);
+      $dispatcher.off($format('{0}:input:focus', [$prop('uuid', element)]), focus, element);
     },
     
     prototype: {
@@ -72,9 +74,7 @@ this.Ninja([
       
     },
     
-    template: function (element, data) {
-      $fileRequest('./templates/bbz-text.html', $compose($render(element), $template(_, data)));
-    }
+    template: $render(_, _, '../templates/bbz-text.html')
     
   });
 

@@ -74,7 +74,7 @@ gulp.task('ninja-modules-auto-load', ['bower'], function () {
 
 });
 
-gulp.task('ninja-form', function () {
+gulp.task('ninja-form', ['ninja-modules-auto-load'], function () {
 
   return gulp.src(['./components/*.js', './modules/*.js', './setups/*.js'])
              .pipe(concat('ninja-form.min.js'))
@@ -83,7 +83,7 @@ gulp.task('ninja-form', function () {
 
 });
 
-gulp.task('ninja-smoke-bomb', ['ninja-modules-auto-load', 'ninja-form'], function () {
+gulp.task('ninja-script', ['ninja-form'], function () {
 
   return gulp.src('./script.txt')
              .pipe(inject(gulp.src(['./dest/ninja.min.js', './dest/ninja-form.min.js']), {
@@ -96,3 +96,19 @@ gulp.task('ninja-smoke-bomb', ['ninja-modules-auto-load', 'ninja-form'], functio
              .pipe(gulp.dest('./dest'));
   
 });
+
+gulp.task('ninja-smoke-bomb', ['ninja-script'], function () {
+
+  return gulp.src('./index.html')
+             .pipe(inject(gulp.src(['./dest/script.txt']), {
+                starttag: "<!-- START SMOKE BOMB -->",
+                endtag: "<!-- END SMOKE BOMB -->",
+                transform: function (filePath, file) {
+                  return file.contents.toString('utf8');
+                }
+             }))
+             .pipe(gulp.dest('./dest'));
+  
+});
+
+gulp.task('default', ['ninja-smoke-bomb']);
